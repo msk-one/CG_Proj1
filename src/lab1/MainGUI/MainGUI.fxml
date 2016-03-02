@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
 
 <VBox maxHeight="768.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.MainGUI.Controller">
   <children>
@@ -57,10 +58,16 @@
                               <Insets bottom="15.0" left="25.0" right="25.0" />
                            </VBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="convFilterChooser" prefHeight="25.0" prefWidth="202.0">
-                           <padding>
-                              <Insets bottom="15.0" />
-                           </padding>
+                        <ChoiceBox fx:id="convFilterChooser" prefHeight="25.0" prefWidth="202.0" value="Blur">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Blur" />
+                                    <String fx:value="Gaussian smoothing" />
+                                    <String fx:value="Sharpen" />
+                                    <String fx:value="Edge detection" />
+                                    <String fx:value="Emboss" />
+                                </FXCollections>
+                            </items>
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -87,10 +94,15 @@
                               <Insets bottom="15.0" left="25.0" right="25.0" />
                            </VBox.margin>
                         </Label>
-                        <ChoiceBox fx:id="funcFilterChooser" prefHeight="25.0" prefWidth="202.0">
-                           <padding>
-                              <Insets bottom="15.0" />
-                           </padding>
+                        <ChoiceBox fx:id="funcFilterChooser" prefHeight="25.0" prefWidth="202.0" value="Inversion">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Inversion" />
+                                    <String fx:value="Brightness correction" />
+                                    <String fx:value="Contrast enhancement" />
+                                    <String fx:value="Gamma correction" />
+                                </FXCollections>
+                            </items>
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -107,7 +119,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <Separator layoutX="-4.0" layoutY="268.0" prefHeight="2.0" prefWidth="256.0" />
+                  <Separator layoutX="-3.0" layoutY="254.0" prefHeight="2.0" prefWidth="256.0" />
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
