@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("MainGUI/ComplexApplication_css.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainGUI/MainGUI.fxml"));
         primaryStage.setTitle("CG Lab 1 Project");
         primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
