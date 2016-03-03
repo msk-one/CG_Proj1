@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static Stage mainStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -14,6 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("CG Lab 1 Project");
         primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
+        mainStage = primaryStage;
     }
 
 
