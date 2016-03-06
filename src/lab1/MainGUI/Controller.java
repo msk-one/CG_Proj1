@@ -47,9 +47,11 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        defaultBrightCoeff.setText("For brighteness correction coefficient value is set to: "+Helpers.brightCoeff);
-        defaultContrastCoeff.setText("For contrast enchacement: "+Helpers.contrastCoeff);
-        defaultGamma.setText("For gamma correction: "+Helpers.gamma);
+        if (defaultBrightCoeff != null) {
+            defaultBrightCoeff.setText("For brighteness correction coefficient value is set to: " + Helpers.brightCoeff);
+            defaultContrastCoeff.setText("For contrast enchacement: " + Helpers.contrastCoeff);
+            defaultGamma.setText("For gamma correction: " + Helpers.gamma);
+        }
     }
 
     public void showAbout(ActionEvent actionEvent) throws IOException {

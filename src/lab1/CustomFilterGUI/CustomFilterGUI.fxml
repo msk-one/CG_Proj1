@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
 
 <GridPane hgap="14.0" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.CustomFilterGUI.Controller">
   <children>
@@ -19,6 +21,47 @@
             <Font name="System Bold" size="13.0" />
           </font>
         </Label>
+            <HBox prefHeight="256.0" prefWidth="558.0">
+               <children>
+                  <LineChart prefHeight="256.0" prefWidth="256.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" tickLabelsVisible="false" />
+                    </yAxis>
+                  </LineChart>
+                  <VBox prefHeight="256.0" prefWidth="279.0">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="174.0" text="Select function transformation:" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" top="80.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="filterChoiceBox" prefHeight="25.0" prefWidth="198.0" value="Inversion">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" top="15.0" />
+                           </VBox.margin>
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Inversion" />
+                                    <String fx:value="Brightness correction" />
+                                    <String fx:value="Contrast enhancement" />
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+                        <Button fx:id="filterChoiceApplyButton" onAction="#filterChoiceApply" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Apply">
+                           <VBox.margin>
+                              <Insets left="80.0" right="80.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
       </children>
     </VBox>
     <HBox maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -29,14 +72,14 @@
           </HBox.margin>
         </HBox>
         <Pane maxWidth="+Infinity" HBox.hgrow="ALWAYS" />
-        <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" text="Cancel" HBox.hgrow="NEVER">
+        <Button fx:id="cancelButton" onAction="#cancelCustomFilters" cancelButton="true" minWidth="80.0" mnemonicParsing="false" text="Cancel" HBox.hgrow="NEVER">
           <HBox.margin>
             <Insets />
           </HBox.margin>
         </Button>
         <HBox fx:id="okParent" alignment="CENTER">
           <children>
-            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" text="Ok" HBox.hgrow="NEVER">
+            <Button fx:id="okButton" onAction="#transformImage" minWidth="80.0" mnemonicParsing="false" text="Transform" HBox.hgrow="NEVER">
               <HBox.margin>
                 <Insets left="14.0" />
               </HBox.margin>
