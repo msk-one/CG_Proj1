@@ -32,7 +32,7 @@ public class ImageChooserGUI {
             file = newFile;
         }
         else {
-            Alert alr = new Alert(Alert.AlertType.CONFIRMATION, "You didn't choose any file!", ButtonType.APPLY);
+            Alert alr = new Alert(Alert.AlertType.WARNING, "You didn't choose any file!", ButtonType.OK);
             alr.show();
         }
     }

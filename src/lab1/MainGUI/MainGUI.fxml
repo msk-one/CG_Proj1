@@ -72,26 +72,21 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <ProgressIndicator fx:id="convFilterProgress" progress="0.0">
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </ProgressIndicator>
-                        <Button fx:id="convFilterApplyButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="144.0" text="Transform">
+                        <Button fx:id="convFilterApplyButton" mnemonicParsing="false" onAction="#transformUsingConvFilter" prefHeight="37.0" prefWidth="144.0" text="Transform">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
-                  <VBox layoutX="28.0" layoutY="294.0" prefHeight="184.0" prefWidth="194.0">
+                  <VBox layoutX="28.0" layoutY="294.0" prefHeight="354.0" prefWidth="194.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="147.0" text="Function filters:" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="194.0" text="Default function filters:" textAlignment="CENTER">
                            <font>
                               <Font name="Calibri" size="16.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="15.0" left="25.0" right="25.0" />
+                              <Insets bottom="15.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Label>
                         <ChoiceBox fx:id="funcFilterChooser" prefHeight="25.0" prefWidth="202.0" value="Inversion">
@@ -107,19 +102,26 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <ProgressIndicator fx:id="funcFilterProgress" progress="0.0">
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </ProgressIndicator>
-                        <Button fx:id="funcFilterApplyButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="144.0" text="Transform">
+                        <Button fx:id="funcFilterApplyButton" mnemonicParsing="false" onAction="#transformUsingFuncFilter" prefHeight="37.0" prefWidth="144.0" text="Transform">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </Button>
+                        <Label fx:id="defaultBrightCoeff" prefHeight="46.0" prefWidth="194.0" text="For brighteness correction coefficient value is set to: " wrapText="true">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="defaultContrastCoeff" prefHeight="35.0" prefWidth="194.0" text="For contrast enchacement: " wrapText="true" />
+                        <Label fx:id="defaultGamma" prefHeight="34.0" prefWidth="194.0" text="For gamma correction: " wrapText="true" />
+                        <Label prefHeight="44.0" prefWidth="194.0" text="All changes can be made on proper constants inside Filters.Helpers class." textAlignment="CENTER" textFill="RED" wrapText="true">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
-                  <Separator layoutX="-3.0" layoutY="254.0" prefHeight="2.0" prefWidth="256.0" />
+                  <Separator layoutX="-3.0" layoutY="239.0" prefHeight="2.0" prefWidth="256.0" />
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
