@@ -13,65 +13,53 @@ import java.awt.image.Kernel;
  */
 public class Filters {
     public static BufferedImage convBlurFilter(BufferedImage img) {
-        int[][] matrix = {
+        double[][] matrix = {
                 {1, 1, 1},
                 {1, 1, 1},
                 {1, 1, 1},
         };
 
-        int alpha = 0;
-        int red = 0;
-        int green = 0;
-        int blue = 0;
-        int newRGB = 0;
-
-        int sumR = 0;
-        int sumG = 0;
-        int sumB = 0;
-
-        for (int i = 0; i < img.getWidth(); i++) {
-            for (int j = 0; j < img.getHeight(); j++) {
-                alpha = new Color(img.getRGB(i, j)).getAlpha();
-                red = new Color(img.getRGB(i, j)).getRed();
-                green = new Color(img.getRGB(i, j)).getGreen();
-                blue = new Color(img.getRGB(i, j)).getBlue();
-
-                for (int x = 0; x < 3; x++) {
-                    for (int y = 0; y < 3; y++) {
-                        if(x+i >= 0 && x+i < img.getWidth() && y+j >= 0 && y+j < img.getHeight()) {
-                            sumR += matrix[x][y] * new Color(img.getRGB(x + i, y + j)).getRed();
-                            sumG += matrix[x][y] * new Color(img.getRGB(x + i, y + j)).getGreen();
-                            sumB += matrix[x][y] * new Color(img.getRGB(x + i, y + j)).getBlue();
-                        }
-                    }
-                }
-
-                red = sumR/9;
-                green = sumG/9;
-                blue = sumB/9;
-
-                newRGB = Helpers.colorToRGBint(alpha, red, green, blue);
-                img.setRGB(i, j, newRGB);
-            }
-        }
-
-        return img;
+        return Helpers.convolve2D(img, matrix);
     }
 
-    public static void convGaussSmoothFilter(Image img) {
+    public static BufferedImage convGaussSmoothFilter(BufferedImage img) {
+        double[][] matrix = {
+                {0, 1, 0},
+                {1, 4, 1},
+                {0, 1, 0},
+        };
 
+        return Helpers.convolve2D(img, matrix);
     }
 
-    public static void convSharpenFilter(Image img) {
+    public static BufferedImage convSharpenFilter(BufferedImage img) {
+        double[][] matrix = {
+                {-1, -1, -1},
+                {-1, 9, -1},
+                {-1, -1, -1},
+        };
 
+        return Helpers.convolve2D(img, matrix);
     }
 
-    public static void convEdgeDetectFilter(Image img) {
+    public static BufferedImage convEdgeDetectFilter(BufferedImage img) {
+        double[][] matrix = {
+                {-1, -1, -1},
+                {-1, 8, -1},
+                {-1, -1, -1},
+        };
 
+        return Helpers.convolve2D(img, matrix);
     }
 
-    public static void convEmbossFilter(Image img) {
+    public static BufferedImage convEmbossFilter(BufferedImage img) {
+        double[][] matrix = {
+                {-1, -1, 0},
+                {-1, 1, 1},
+                {0, 1, 1},
+        };
 
+        return Helpers.convolve2D(img, matrix);
     }
 
     public static BufferedImage funcInversionFilter(BufferedImage img) {

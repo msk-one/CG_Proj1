@@ -77,6 +77,11 @@
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
                         </Button>
+                        <Label prefHeight="44.0" prefWidth="194.0" text="All changes can be made on proper matrices inside Filters.Filters class." textAlignment="CENTER" textFill="RED" wrapText="true">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox layoutX="28.0" layoutY="294.0" prefHeight="354.0" prefWidth="194.0">

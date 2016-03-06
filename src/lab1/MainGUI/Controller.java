@@ -105,19 +105,23 @@ public class Controller {
                     mainImageView.setImage(image);
                     break;
                 case "Gaussian smoothing":
-                    Filters.convGaussSmoothFilter(image);
+                    workingImage = Filters.convGaussSmoothFilter(workCpy);
+                    image = toFXImage(workingImage, null);
                     mainImageView.setImage(image);
                     break;
                 case "Sharpen":
-                    Filters.convSharpenFilter(image);
+                    workingImage = Filters.convSharpenFilter(workCpy);
+                    image = toFXImage(workingImage, null);
                     mainImageView.setImage(image);
                     break;
                 case "Edge detection":
-                    Filters.convEdgeDetectFilter(image);
+                    workingImage = Filters.convEdgeDetectFilter(workCpy);
+                    image = toFXImage(workingImage, null);
                     mainImageView.setImage(image);
                     break;
                 case "Emboss":
-                    Filters.convEmbossFilter(image);
+                    workingImage = Filters.convEmbossFilter(workCpy);
+                    image = toFXImage(workingImage, null);
                     mainImageView.setImage(image);
                     break;
             }
