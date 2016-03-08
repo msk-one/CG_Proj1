@@ -1,6 +1,8 @@
 package lab1.MainGUI;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lab1.Filters.Filters;
@@ -33,7 +36,7 @@ public class Controller {
     public static BufferedImage workingImage;
 
     @FXML
-    private ImageView mainImageView;
+    public ImageView mainImageView;
     @FXML
     private ChoiceBox convFilterChooser;
     @FXML
@@ -52,7 +55,9 @@ public class Controller {
             defaultContrastCoeff.setText("For contrast enchacement: " + Helpers.contrastCoeff);
             defaultGamma.setText("For gamma correction: " + Helpers.gamma);
         }
+
     }
+
 
     public void showAbout(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../AboutGUI/AboutGUI.fxml"));
@@ -65,7 +70,6 @@ public class Controller {
     }
 
     public void quitApp(ActionEvent actionEvent) {
-        //TODO: ask about save
         Platform.exit();
     }
 
@@ -89,6 +93,16 @@ public class Controller {
         stage.setTitle("Custom function for filter");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root1, 600, 400));
+        stage.setOnHiding(e -> {
+            if (image != null) {
+                mainImageView.setImage(image);
+            }
+        });
+        stage.setOnCloseRequest(e -> {
+            if (image != null) {
+                mainImageView.setImage(image);
+            }
+        });
         stage.show();
     }
 

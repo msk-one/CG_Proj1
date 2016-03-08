@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import lab1.Filters.CustomFunction;
 import lab1.Filters.Filters;
 import lab1.Filters.Helpers;
 
@@ -31,25 +32,38 @@ public class Controller {
     private NumberAxis xAxis;
     private NumberAxis yAxis;
 
+    private XYChart.Series<Number, Number> series;
+
     @FXML
     public void initialize() {
         xAxis = (NumberAxis) mainChart.getXAxis();
         yAxis = (NumberAxis) mainChart.getYAxis();
 
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series = new XYChart.Series<>();
         series.getData().add(new XYChart.Data<>(1, 1));
         series.getData().add(new XYChart.Data<>(255, 255));
 
         mainChart.getData().add(series);
 
-        mainChart.setOnMousePressed(e -> {
+        mainChart.setScaleX(1);
+        mainChart.setScaleY(1);
+
+        mainChart.setOnMouseClicked(e -> {
             for (XYChart.Data<Number, Number> data : series.getData()) {
-                if (e.getSceneX() == data.getXValue().intValue() && e.getSceneY() == data.getYValue().intValue()) {
+                if (e.getX() == data.getXValue().intValue() && e.getY() == data.getYValue().intValue()) {
                     return;
                 }
             }
-            series.getData().add(new XYChart.Data<>(xAxis.getValueForDisplay(e.getSceneX()),yAxis.getValueForDisplay(e.getSceneY())));
+
+            int startX = (int) e.getX() - 15;
+            int startY = (int) e.getY();
+
+            startY = 255 - startY + 15;
+
+            series.getData().add(new XYChart.Data<>(startX, startY));
         });
+
+
     }
 
     public void filterChoiceApply(ActionEvent actionEvent) {
@@ -57,42 +71,81 @@ public class Controller {
         switch (val) {
             case "Inversion":
                 mainChart.getData().clear();
-                XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                series = new XYChart.Series<>();
                 series.getData().add(new XYChart.Data<>(1, 255));
                 series.getData().add(new XYChart.Data<>(255, 1));
 
                 mainChart.getData().add(series);
 
+                mainChart.setScaleX(1);
+                mainChart.setScaleY(1);
 
-                for (XYChart.Data<Number, Number> data : series.getData()) {
-                    Node node = data.getNode() ;
-                    node.setCursor(Cursor.HAND);
-                    node.setOnMouseDragged(e -> {
-                        if((data.getXValue().intValue() == 1 && data.getYValue().intValue() == 255) || (data.getXValue().intValue() == 255 && data.getYValue().intValue() == 1)) {
+                mainChart.setOnMouseClicked(e -> {
+                    for (XYChart.Data<Number, Number> data : series.getData()) {
+                        if (e.getX() == data.getXValue().intValue() && e.getY() == data.getYValue().intValue()) {
                             return;
                         }
-                        Point2D pointInScene = new Point2D(e.getSceneX(), e.getSceneY());
-                        double yAxisLoc = yAxis.sceneToLocal(pointInScene).getY();
-                        Number y = yAxis.getValueForDisplay(yAxisLoc);
-                        data.setYValue(y);
-                    });
-                }
+                    }
+
+                    int startX = (int) e.getX() - 15;
+                    int startY = (int) e.getY();
+
+                    startY = 255 - startY + 15;
+
+                    series.getData().add(new XYChart.Data<>(startX, startY));
+                });
                 break;
             case "Brightness correction":
                 mainChart.getData().clear();
-                XYChart.Series<Number, Number> series2 = new XYChart.Series<>();
-                series2.getData().add(new XYChart.Data<>(1, 10));
-                series2.getData().add(new XYChart.Data<>(255, 265));
+                series = new XYChart.Series<>();
+                series.getData().add(new XYChart.Data<>(1, 10));
+                series.getData().add(new XYChart.Data<>(255, 265));
 
-                mainChart.getData().add(series2);
+                mainChart.getData().add(series);
+
+                mainChart.setScaleX(1);
+                mainChart.setScaleY(1);
+
+                mainChart.setOnMouseClicked(e -> {
+                    for (XYChart.Data<Number, Number> data : series.getData()) {
+                        if (e.getX() == data.getXValue().intValue() && e.getY() == data.getYValue().intValue()) {
+                            return;
+                        }
+                    }
+
+                    int startX = (int) e.getX() - 15;
+                    int startY = (int) e.getY();
+
+                    startY = 255 - startY + 15;
+
+                    series.getData().add(new XYChart.Data<>(startX, startY));
+                });
                 break;
             case "Contrast enhancement":
                 mainChart.getData().clear();
-                XYChart.Series<Number, Number> series3 = new XYChart.Series<>();
-                series3.getData().add(new XYChart.Data<>(1, 2));
-                series3.getData().add(new XYChart.Data<>(255, 510));
+                series = new XYChart.Series<>();
+                series.getData().add(new XYChart.Data<>(1, 2));
+                series.getData().add(new XYChart.Data<>(255, 510));
 
-                mainChart.getData().add(series3);
+                mainChart.getData().add(series);
+
+                mainChart.setScaleX(1);
+                mainChart.setScaleY(1);
+
+                mainChart.setOnMouseClicked(e -> {
+                    for (XYChart.Data<Number, Number> data : series.getData()) {
+                        if (e.getX() == data.getXValue().intValue() && e.getY() == data.getYValue().intValue()) {
+                            return;
+                        }
+                    }
+
+                    int startX = (int) e.getX() - 15;
+                    int startY = (int) e.getY();
+
+                    startY = 255 - startY + 15;
+
+                    series.getData().add(new XYChart.Data<>(startX, startY));
+                });
                 break;
         }
     }
@@ -107,8 +160,11 @@ public class Controller {
             Alert alr = new Alert(Alert.AlertType.ERROR, "There is no image to process!", ButtonType.OK);
             alr.show();
         }
-
-
+        else {
+            BufferedImage workCpy = Helpers.copyBufferedImage(lab1.MainGUI.Controller.workingImage);
+            lab1.MainGUI.Controller.workingImage = CustomFunction.transformImageWithSeries(series, workCpy);
+            lab1.MainGUI.Controller.image = toFXImage(lab1.MainGUI.Controller.workingImage, null);
+        }
 
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();

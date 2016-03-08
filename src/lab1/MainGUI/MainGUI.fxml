@@ -11,7 +11,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.collections.*?>
 
-<VBox maxHeight="768.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.MainGUI.Controller">
+<VBox fx:id="root" maxHeight="768.0" maxWidth="1024.0" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.MainGUI.Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>

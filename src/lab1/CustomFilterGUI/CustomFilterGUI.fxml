@@ -14,18 +14,18 @@
 
 <GridPane hgap="14.0" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.CustomFilterGUI.Controller">
   <children>
-    <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefWidth="400.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefHeight="321.0" prefWidth="558.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
       <children>
         <Label fx:id="messageLabel" text="Custom function for filter" textAlignment="LEFT" wrapText="true">
           <font>
             <Font name="System Bold" size="13.0" />
           </font>
         </Label>
-            <HBox prefHeight="256.0" prefWidth="558.0">
+            <HBox prefHeight="289.0" prefWidth="558.0">
                <children>
-                  <LineChart fx:id="mainChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="256.0" maxWidth="256.0" minHeight="256.0" minWidth="256.0" prefHeight="256.0" prefWidth="256.0" verticalZeroLineVisible="false">
-                      <xAxis><NumberAxis autoRanging="false" lowerBound="1" tickUnit="1" upperBound="255" /></xAxis>
-                      <yAxis><NumberAxis autoRanging="false" lowerBound="1" tickUnit="1" upperBound="255" /></yAxis>
+                  <LineChart fx:id="mainChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="297.0" maxWidth="347.0" minHeight="255.0" minWidth="256.0" prefHeight="289.0" prefWidth="347.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                      <xAxis><NumberAxis animated="false" lowerBound="1" maxHeight="1.0" maxWidth="256.0" minHeight="1.0" minWidth="256.0" minorTickVisible="false" prefHeight="1.0" prefWidth="256.0" tickLabelsVisible="false" tickMarkVisible="false" tickUnit="1" upperBound="255" /></xAxis>
+                      <yAxis><NumberAxis animated="false" lowerBound="1" maxHeight="256.0" maxWidth="1.0" minHeight="256.0" minWidth="1.0" minorTickVisible="false" prefHeight="256.0" prefWidth="1.0" tickLabelsVisible="false" tickMarkVisible="false" tickUnit="1" upperBound="255" /></yAxis>
                   </LineChart>
                   <VBox prefHeight="256.0" prefWidth="279.0">
                      <HBox.margin>
