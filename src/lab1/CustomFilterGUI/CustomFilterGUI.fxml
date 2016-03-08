@@ -23,13 +23,9 @@
         </Label>
             <HBox prefHeight="256.0" prefWidth="558.0">
                <children>
-                  <LineChart prefHeight="256.0" prefWidth="256.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" tickLabelsVisible="false" />
-                    </yAxis>
+                  <LineChart fx:id="mainChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="256.0" maxWidth="256.0" minHeight="256.0" minWidth="256.0" prefHeight="256.0" prefWidth="256.0" verticalZeroLineVisible="false">
+                      <xAxis><NumberAxis autoRanging="false" lowerBound="1" tickUnit="1" upperBound="255" /></xAxis>
+                      <yAxis><NumberAxis autoRanging="false" lowerBound="1" tickUnit="1" upperBound="255" /></yAxis>
                   </LineChart>
                   <VBox prefHeight="256.0" prefWidth="279.0">
                      <HBox.margin>
@@ -53,7 +49,7 @@
                                 </FXCollections>
                             </items>
                         </ChoiceBox>
-                        <Button fx:id="filterChoiceApplyButton" onAction="#filterChoiceApply" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Apply">
+                        <Button fx:id="filterChoiceApplyButton" mnemonicParsing="false" onAction="#filterChoiceApply" prefHeight="25.0" prefWidth="148.0" text="Apply">
                            <VBox.margin>
                               <Insets left="80.0" right="80.0" top="20.0" />
                            </VBox.margin>
@@ -72,14 +68,14 @@
           </HBox.margin>
         </HBox>
         <Pane maxWidth="+Infinity" HBox.hgrow="ALWAYS" />
-        <Button fx:id="cancelButton" onAction="#cancelCustomFilters" cancelButton="true" minWidth="80.0" mnemonicParsing="false" text="Cancel" HBox.hgrow="NEVER">
+        <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" onAction="#cancelCustomFilters" text="Cancel" HBox.hgrow="NEVER">
           <HBox.margin>
             <Insets />
           </HBox.margin>
         </Button>
         <HBox fx:id="okParent" alignment="CENTER">
           <children>
-            <Button fx:id="okButton" onAction="#transformImage" minWidth="80.0" mnemonicParsing="false" text="Transform" HBox.hgrow="NEVER">
+            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#transformImage" text="Transform" HBox.hgrow="NEVER">
               <HBox.margin>
                 <Insets left="14.0" />
               </HBox.margin>
