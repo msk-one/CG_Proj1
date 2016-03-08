@@ -8,10 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import lab1.Filters.CustomFunction;
 import lab1.Filters.Filters;
@@ -26,6 +23,8 @@ public class Controller {
     public ChoiceBox filterChoiceBox;
     @FXML
     public LineChart mainChart;
+    @FXML
+    public TextField coefficientTextField;
     @FXML
     private Button cancelButton;
 
@@ -97,9 +96,21 @@ public class Controller {
                 break;
             case "Brightness correction":
                 mainChart.getData().clear();
+
+                int coeff = 0;
+
+                try {
+                    coeff = Integer.parseInt(coefficientTextField.getText());
+                }
+                catch (Exception ex) {
+                    Alert alr = new Alert(Alert.AlertType.ERROR, "Improper value (not integer) as coefficient!", ButtonType.OK);
+                    alr.show();
+                    return;
+                }
+
                 series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>(1, 10));
-                series.getData().add(new XYChart.Data<>(255, 265));
+                series.getData().add(new XYChart.Data<>(1, 1+coeff));
+                series.getData().add(new XYChart.Data<>(255, 255+coeff));
 
                 mainChart.getData().add(series);
 
@@ -123,9 +134,21 @@ public class Controller {
                 break;
             case "Contrast enhancement":
                 mainChart.getData().clear();
+
+                double coeffContr = 1;
+
+                try {
+                    coeffContr = Double.parseDouble(coefficientTextField.getText());
+                }
+                catch (Exception ex) {
+                    Alert alr = new Alert(Alert.AlertType.ERROR, "Improper value (not float) as coefficient!", ButtonType.OK);
+                    alr.show();
+                    return;
+                }
+
                 series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>(1, 2));
-                series.getData().add(new XYChart.Data<>(255, 510));
+                series.getData().add(new XYChart.Data<>(1, (int)(1*coeffContr)));
+                series.getData().add(new XYChart.Data<>(255, (int)(255*coeffContr)));
 
                 mainChart.getData().add(series);
 

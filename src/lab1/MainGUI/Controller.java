@@ -83,6 +83,8 @@ public class Controller {
     }
 
     public void closeImage(ActionEvent actionEvent) {
+        workingImage = null;
+        image = null;
         mainImageView.setImage(null);
     }
 

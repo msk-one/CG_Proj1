@@ -25,6 +25,9 @@ public class ImageChooserGUI {
     public ImageChooserGUI(Stage stage) {
         desktop = Desktop.getDesktop();
         fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter fileExtensions = new FileChooser.ExtensionFilter("Images", "*.jpeg", "*.jpg", "*.png");
+
+        fileChooser.getExtensionFilters().add(fileExtensions);
 
         File newFile = fileChooser.showOpenDialog(stage);
 
@@ -36,15 +39,4 @@ public class ImageChooserGUI {
             alr.show();
         }
     }
-
-//    private void openFile(File file) {
-//        try {
-//            desktop.open(file);
-//        } catch (IOException ex) {
-//            Logger.getLogger(
-//                ImageChooserGUI.class.getName()).log(
-//                    Level.SEVERE, null, ex
-//                );
-//        }
-//    }
 }

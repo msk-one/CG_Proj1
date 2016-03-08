@@ -31,18 +31,24 @@ public class CustomFunction {
                 int b = 0;
 
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(red > (int) data.getXValue() && red <= (int) series.getData().get(a+1).getXValue()) {
-                        r = a;
+                    if(a+1 < series.getData().size()) {
+                        if (red > (int) data.getXValue() && red <= (int) series.getData().get(a + 1).getXValue()) {
+                            r = a;
+                        }
                     }
                     a++;
                 }
 
+                // comes from y=(((yB-yA)(x-xA))/(xB-xA))+yA
+                // equation for linear expression
                 red = ((((series.getData().get(r+1).getYValue().intValue()-series.getData().get(r).getYValue().intValue())*(red - series.getData().get(r).getXValue().intValue()))/(series.getData().get(r+1).getXValue().intValue()-series.getData().get(r).getXValue().intValue()))+(series.getData().get(r).getYValue().intValue()));
 
                 a = 0;
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(green > (int) data.getXValue() && green <= (int) series.getData().get(a+1).getXValue()) {
-                        g = a;
+                    if(a+1 < series.getData().size()) {
+                        if (green > (int) data.getXValue() && green <= (int) series.getData().get(a + 1).getXValue()) {
+                            g = a;
+                        }
                     }
                     a++;
                 }
@@ -51,8 +57,10 @@ public class CustomFunction {
 
                 a = 0;
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(blue > (int) data.getXValue() && blue <= (int) series.getData().get(a+1).getXValue()) {
-                        b = a;
+                    if(a+1 < series.getData().size()) {
+                        if (blue > (int) data.getXValue() && blue <= (int) series.getData().get(a + 1).getXValue()) {
+                            b = a;
+                        }
                     }
                     a++;
                 }
