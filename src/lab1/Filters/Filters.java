@@ -1,12 +1,7 @@
 package lab1.Filters;
 
-import javafx.scene.image.Image;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
 
 /**
  * Created by mskas on 02.03.2016.
@@ -154,9 +149,9 @@ public class Filters {
                 green = new Color(img.getRGB(i, j)).getGreen();
                 blue = new Color(img.getRGB(i, j)).getBlue();
 
-                red = (int) (red*contrastCoeff);
-                green = (int) (green*contrastCoeff);
-                blue = (int) (blue*contrastCoeff);
+                red = (int) (red * contrastCoeff);
+                green = (int) (green * contrastCoeff);
+                blue = (int) (blue * contrastCoeff);
 
                 if (red > 255) {
                     red = 255;

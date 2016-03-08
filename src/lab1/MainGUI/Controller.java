@@ -1,8 +1,6 @@
 package lab1.MainGUI;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +12,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lab1.Filters.Filters;
@@ -22,11 +19,8 @@ import lab1.Filters.Helpers;
 import lab1.ImageChooserGUI.ImageChooserGUI;
 import lab1.Main;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 
 import static javafx.embed.swing.SwingFXUtils.fromFXImage;
 import static javafx.embed.swing.SwingFXUtils.toFXImage;
@@ -113,8 +107,7 @@ public class Controller {
         if (image == null) {
             Alert alr = new Alert(Alert.AlertType.ERROR, "There is no image to process!", ButtonType.OK);
             alr.show();
-        }
-        else {
+        } else {
             BufferedImage workCpy = Helpers.copyBufferedImage(workingImage);
             switch (val) {
                 case "Blur":
@@ -151,8 +144,7 @@ public class Controller {
         if (image == null) {
             Alert alr = new Alert(Alert.AlertType.ERROR, "There is no image to process!", ButtonType.OK);
             alr.show();
-        }
-        else {
+        } else {
             BufferedImage workCpy = Helpers.copyBufferedImage(workingImage);
             switch (val) {
                 case "Inversion":

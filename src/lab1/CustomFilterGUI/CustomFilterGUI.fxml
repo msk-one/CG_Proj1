@@ -1,107 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.collections.*?>
-
-<GridPane hgap="14.0" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab1.CustomFilterGUI.Controller">
-  <children>
-    <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefHeight="321.0" prefWidth="558.0" spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-      <children>
-        <Label fx:id="messageLabel" text="Custom function for filter" textAlignment="LEFT" wrapText="true">
-          <font>
-            <Font name="System Bold" size="13.0" />
-          </font>
-        </Label>
-            <HBox prefHeight="289.0" prefWidth="558.0">
-               <children>
-                  <LineChart fx:id="mainChart" alternativeRowFillVisible="false" animated="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="297.0" maxWidth="347.0" minHeight="255.0" minWidth="256.0" prefHeight="289.0" prefWidth="347.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-                      <xAxis><NumberAxis animated="false" lowerBound="1" maxHeight="1.0" maxWidth="256.0" minHeight="1.0" minWidth="256.0" minorTickVisible="false" prefHeight="1.0" prefWidth="256.0" tickLabelsVisible="false" tickMarkVisible="false" tickUnit="1" upperBound="255" /></xAxis>
-                      <yAxis><NumberAxis animated="false" lowerBound="1" maxHeight="256.0" maxWidth="1.0" minHeight="256.0" minWidth="1.0" minorTickVisible="false" prefHeight="256.0" prefWidth="1.0" tickLabelsVisible="false" tickMarkVisible="false" tickUnit="1" upperBound="255" /></yAxis>
-                  </LineChart>
-                  <VBox prefHeight="256.0" prefWidth="279.0">
-                     <HBox.margin>
-                        <Insets left="25.0" />
-                     </HBox.margin>
-                     <children>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="174.0" text="Select function transformation:" textAlignment="CENTER">
-                           <VBox.margin>
-                              <Insets left="50.0" right="50.0" top="80.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ChoiceBox fx:id="filterChoiceBox" prefHeight="25.0" prefWidth="198.0" value="Inversion">
-                           <VBox.margin>
-                              <Insets left="50.0" right="50.0" top="15.0" />
-                           </VBox.margin>
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Inversion" />
-                                    <String fx:value="Brightness correction" />
-                                    <String fx:value="Contrast enhancement" />
-                                </FXCollections>
-                            </items>
-                        </ChoiceBox>
-                        <TextField fx:id="coefficientTextField" alignment="CENTER" promptText="coefficient" text="1">
-                           <VBox.margin>
-                              <Insets left="70.0" right="70.0" top="20.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Button fx:id="filterChoiceApplyButton" alignment="CENTER" mnemonicParsing="false" onAction="#filterChoiceApply" prefHeight="25.0" prefWidth="102.0" text="Apply" textAlignment="CENTER">
-                           <VBox.margin>
-                              <Insets left="80.0" right="80.0" top="20.0" />
-                           </VBox.margin>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<GridPane hgap="14.0" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0"
+          prefWidth="600.0" vgap="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="lab1.CustomFilterGUI.Controller">
+    <children>
+        <VBox maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefHeight="321.0" prefWidth="558.0"
+              spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <children>
+                <Label fx:id="messageLabel" text="Custom function for filter" textAlignment="LEFT" wrapText="true">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <HBox prefHeight="289.0" prefWidth="558.0">
+                    <children>
+                        <LineChart fx:id="mainChart" alternativeRowFillVisible="false" animated="false"
+                                   horizontalGridLinesVisible="false" horizontalZeroLineVisible="false"
+                                   legendVisible="false" maxHeight="297.0" maxWidth="347.0" minHeight="255.0"
+                                   minWidth="256.0" prefHeight="289.0" prefWidth="347.0"
+                                   verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                            <xAxis>
+                                <NumberAxis animated="false" lowerBound="1" maxHeight="1.0" maxWidth="256.0"
+                                            minHeight="1.0" minWidth="256.0" minorTickVisible="false" prefHeight="1.0"
+                                            prefWidth="256.0" tickLabelsVisible="false" tickMarkVisible="false"
+                                            tickUnit="1" upperBound="255"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis animated="false" lowerBound="1" maxHeight="256.0" maxWidth="1.0"
+                                            minHeight="256.0" minWidth="1.0" minorTickVisible="false" prefHeight="256.0"
+                                            prefWidth="1.0" tickLabelsVisible="false" tickMarkVisible="false"
+                                            tickUnit="1" upperBound="255"/>
+                            </yAxis>
+                        </LineChart>
+                        <VBox prefHeight="256.0" prefWidth="279.0">
+                            <HBox.margin>
+                                <Insets left="25.0"/>
+                            </HBox.margin>
+                            <children>
+                                <Label alignment="CENTER" prefHeight="17.0" prefWidth="174.0"
+                                       text="Select function transformation:" textAlignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets left="50.0" right="50.0" top="80.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <ChoiceBox fx:id="filterChoiceBox" prefHeight="25.0" prefWidth="198.0"
+                                           value="Inversion">
+                                    <VBox.margin>
+                                        <Insets left="50.0" right="50.0" top="15.0"/>
+                                    </VBox.margin>
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Inversion"/>
+                                            <String fx:value="Brightness correction"/>
+                                            <String fx:value="Contrast enhancement"/>
+                                        </FXCollections>
+                                    </items>
+                                </ChoiceBox>
+                                <TextField fx:id="coefficientTextField" alignment="CENTER" promptText="coefficient"
+                                           text="1">
+                                    <VBox.margin>
+                                        <Insets left="70.0" right="70.0" top="20.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <Button fx:id="filterChoiceApplyButton" alignment="CENTER" mnemonicParsing="false"
+                                        onAction="#filterChoiceApply" prefHeight="25.0" prefWidth="102.0" text="Apply"
+                                        textAlignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets left="80.0" right="80.0" top="20.0"/>
+                                    </VBox.margin>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <HBox maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <HBox fx:id="actionParent" alignment="CENTER">
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </HBox>
+                <Pane maxWidth="+Infinity" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false"
+                        onAction="#cancelCustomFilters" text="Cancel" HBox.hgrow="NEVER">
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </Button>
+                <HBox fx:id="okParent" alignment="CENTER">
+                    <children>
+                        <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#transformImage"
+                                text="Transform" HBox.hgrow="NEVER">
+                            <HBox.margin>
+                                <Insets left="14.0"/>
+                            </HBox.margin>
                         </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-      </children>
-    </VBox>
-    <HBox maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1">
-      <children>
-        <HBox fx:id="actionParent" alignment="CENTER">
-          <HBox.margin>
-            <Insets />
-          </HBox.margin>
+                    </children>
+                </HBox>
+            </children>
         </HBox>
-        <Pane maxWidth="+Infinity" HBox.hgrow="ALWAYS" />
-        <Button fx:id="cancelButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" onAction="#cancelCustomFilters" text="Cancel" HBox.hgrow="NEVER">
-          <HBox.margin>
-            <Insets />
-          </HBox.margin>
-        </Button>
-        <HBox fx:id="okParent" alignment="CENTER">
-          <children>
-            <Button fx:id="okButton" minWidth="80.0" mnemonicParsing="false" onAction="#transformImage" text="Transform" HBox.hgrow="NEVER">
-              <HBox.margin>
-                <Insets left="14.0" />
-              </HBox.margin>
-            </Button>
-          </children>
-        </HBox>
-      </children>
-    </HBox>
-  </children>
-  <columnConstraints>
-    <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" />
-    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="+Infinity" minWidth="-Infinity" />
-  </columnConstraints>
-  <padding>
-    <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
-  </padding>
-  <rowConstraints>
-    <RowConstraints maxHeight="+Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS" />
-    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER" />
-  </rowConstraints>
-  <stylesheets>
-    <URL value="@CustomFilterGUI.css" />
-  </stylesheets>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="+Infinity" minWidth="-Infinity"/>
+    </columnConstraints>
+    <padding>
+        <Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/>
+    </padding>
+    <rowConstraints>
+        <RowConstraints maxHeight="+Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="ALWAYS"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="NEVER"/>
+    </rowConstraints>
+    <stylesheets>
+        <URL value="@CustomFilterGUI.css"/>
+    </stylesheets>
 </GridPane>

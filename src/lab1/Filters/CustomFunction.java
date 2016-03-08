@@ -31,7 +31,7 @@ public class CustomFunction {
                 int b = 0;
 
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(a+1 < series.getData().size()) {
+                    if (a + 1 < series.getData().size()) {
                         if (red > (int) data.getXValue() && red <= (int) series.getData().get(a + 1).getXValue()) {
                             r = a;
                         }
@@ -41,11 +41,11 @@ public class CustomFunction {
 
                 // comes from y=(((yB-yA)(x-xA))/(xB-xA))+yA
                 // equation for linear expression
-                red = ((((series.getData().get(r+1).getYValue().intValue()-series.getData().get(r).getYValue().intValue())*(red - series.getData().get(r).getXValue().intValue()))/(series.getData().get(r+1).getXValue().intValue()-series.getData().get(r).getXValue().intValue()))+(series.getData().get(r).getYValue().intValue()));
+                red = ((((series.getData().get(r + 1).getYValue().intValue() - series.getData().get(r).getYValue().intValue()) * (red - series.getData().get(r).getXValue().intValue())) / (series.getData().get(r + 1).getXValue().intValue() - series.getData().get(r).getXValue().intValue())) + (series.getData().get(r).getYValue().intValue()));
 
                 a = 0;
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(a+1 < series.getData().size()) {
+                    if (a + 1 < series.getData().size()) {
                         if (green > (int) data.getXValue() && green <= (int) series.getData().get(a + 1).getXValue()) {
                             g = a;
                         }
@@ -53,11 +53,11 @@ public class CustomFunction {
                     a++;
                 }
 
-                green = ((((series.getData().get(g+1).getYValue().intValue()-series.getData().get(g).getYValue().intValue())*(green - series.getData().get(g).getXValue().intValue()))/(series.getData().get(g+1).getXValue().intValue()-series.getData().get(g).getXValue().intValue()))+(series.getData().get(g).getYValue().intValue()));
+                green = ((((series.getData().get(g + 1).getYValue().intValue() - series.getData().get(g).getYValue().intValue()) * (green - series.getData().get(g).getXValue().intValue())) / (series.getData().get(g + 1).getXValue().intValue() - series.getData().get(g).getXValue().intValue())) + (series.getData().get(g).getYValue().intValue()));
 
                 a = 0;
                 for (XYChart.Data<Number, Number> data : series.getData()) {
-                    if(a+1 < series.getData().size()) {
+                    if (a + 1 < series.getData().size()) {
                         if (blue > (int) data.getXValue() && blue <= (int) series.getData().get(a + 1).getXValue()) {
                             b = a;
                         }
@@ -65,7 +65,8 @@ public class CustomFunction {
                     a++;
                 }
 
-                blue = ((((series.getData().get(b+1).getYValue().intValue()-series.getData().get(b).getYValue().intValue())*(blue - series.getData().get(b).getXValue().intValue()))/(series.getData().get(b+1).getXValue().intValue()-series.getData().get(b).getXValue().intValue()))+(series.getData().get(b).getYValue().intValue()));;
+                blue = ((((series.getData().get(b + 1).getYValue().intValue() - series.getData().get(b).getYValue().intValue()) * (blue - series.getData().get(b).getXValue().intValue())) / (series.getData().get(b + 1).getXValue().intValue() - series.getData().get(b).getXValue().intValue())) + (series.getData().get(b).getYValue().intValue()));
+                ;
 
                 if (red > 255) {
                     red = 255;

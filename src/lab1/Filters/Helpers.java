@@ -17,7 +17,7 @@ public class Helpers {
     //Defaults to: 0.5
     public static final double gamma = 0.5;
 
-    public static BufferedImage copyBufferedImage (BufferedImage buff) {
+    public static BufferedImage copyBufferedImage(BufferedImage buff) {
         ColorModel col = buff.getColorModel();
         WritableRaster raster = buff.copyData(null);
 
@@ -62,7 +62,7 @@ public class Helpers {
             }
         }
 
-        if(divisor == 0) {
+        if (divisor == 0) {
             divisor = 1;
         }
 
@@ -72,17 +72,17 @@ public class Helpers {
 
                 for (int x = -1; x <= 1; x++) {
                     for (int y = -1; y <= 1; y++) {
-                        if(x+i >= 0 && x+i < img.getWidth() && y+j >= 0 && y+j < img.getHeight()) {
-                            sumR += kernel[x+1][y+1] * new Color(img.getRGB(x + i, y + j)).getRed();
-                            sumG += kernel[x+1][y+1] * new Color(img.getRGB(x + i, y + j)).getGreen();
-                            sumB += kernel[x+1][y+1] * new Color(img.getRGB(x + i, y + j)).getBlue();
+                        if (x + i >= 0 && x + i < img.getWidth() && y + j >= 0 && y + j < img.getHeight()) {
+                            sumR += kernel[x + 1][y + 1] * new Color(img.getRGB(x + i, y + j)).getRed();
+                            sumG += kernel[x + 1][y + 1] * new Color(img.getRGB(x + i, y + j)).getGreen();
+                            sumB += kernel[x + 1][y + 1] * new Color(img.getRGB(x + i, y + j)).getBlue();
                         }
                     }
                 }
 
-                red = (int) (sumR/divisor);
-                green = (int) (sumG/divisor);
-                blue = (int) (sumB/divisor);
+                red = (int) (sumR / divisor);
+                green = (int) (sumG / divisor);
+                blue = (int) (sumB / divisor);
 
                 if (red > 255) {
                     red = 255;

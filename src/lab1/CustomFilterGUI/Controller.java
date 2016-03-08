@@ -2,16 +2,12 @@ package lab1.CustomFilterGUI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import lab1.Filters.CustomFunction;
-import lab1.Filters.Filters;
 import lab1.Filters.Helpers;
 
 import java.awt.image.BufferedImage;
@@ -101,16 +97,15 @@ public class Controller {
 
                 try {
                     coeff = Integer.parseInt(coefficientTextField.getText());
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     Alert alr = new Alert(Alert.AlertType.ERROR, "Improper value (not integer) as coefficient!", ButtonType.OK);
                     alr.show();
                     return;
                 }
 
                 series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>(1, 1+coeff));
-                series.getData().add(new XYChart.Data<>(255, 255+coeff));
+                series.getData().add(new XYChart.Data<>(1, 1 + coeff));
+                series.getData().add(new XYChart.Data<>(255, 255 + coeff));
 
                 mainChart.getData().add(series);
 
@@ -139,16 +134,15 @@ public class Controller {
 
                 try {
                     coeffContr = Double.parseDouble(coefficientTextField.getText());
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     Alert alr = new Alert(Alert.AlertType.ERROR, "Improper value (not float) as coefficient!", ButtonType.OK);
                     alr.show();
                     return;
                 }
 
                 series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>(1, (int)(1*coeffContr)));
-                series.getData().add(new XYChart.Data<>(255, (int)(255*coeffContr)));
+                series.getData().add(new XYChart.Data<>(1, (int) (1 * coeffContr)));
+                series.getData().add(new XYChart.Data<>(255, (int) (255 * coeffContr)));
 
                 mainChart.getData().add(series);
 
@@ -182,8 +176,7 @@ public class Controller {
         if (lab1.MainGUI.Controller.image == null) {
             Alert alr = new Alert(Alert.AlertType.ERROR, "There is no image to process!", ButtonType.OK);
             alr.show();
-        }
-        else {
+        } else {
             BufferedImage workCpy = Helpers.copyBufferedImage(lab1.MainGUI.Controller.workingImage);
             lab1.MainGUI.Controller.workingImage = CustomFunction.transformImageWithSeries(series, workCpy);
             lab1.MainGUI.Controller.image = toFXImage(lab1.MainGUI.Controller.workingImage, null);
